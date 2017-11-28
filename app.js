@@ -25,6 +25,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
+app.use('/petecas', require('./routes/cadastro'))
+app.use('/abacaxi', require('./routes/cadastro'))
 // router.get('/')
 
 

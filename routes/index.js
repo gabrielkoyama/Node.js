@@ -32,12 +32,7 @@ router.get('/cadastro/edit/:id', function(req, res, next) {
   
 });
 
-
-
-
 // 
-
-
 
 router.post('/cadastro/update', function(req, res, next) {
   
