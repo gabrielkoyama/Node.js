@@ -46,7 +46,7 @@ app.use('/users', users);
 //   res.render('error');
 // });
 
-app.listen( 1234, () => {
-  console.log( 'inicializado')
-})
+// app.listen( 8888, () => {
+//   console.log( 'inicializado')
+// })
 module.exports = app;

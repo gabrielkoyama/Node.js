@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+  body
+    title #{title}
+    form(action='/cadastro/update', method='post')
+      for neguinho in petecas
+
+        h1 Edite
+        |         Nome: 
+        input(type='text', name='nome', value=neguinho.nome)
+        br
+        |         Idade: 
+        input(type='text', name='idade', value=neguinho.idade)
+        br
+        input(type='submit', value='salvar')
+
+        a(href="/") Voltar
+
+          
