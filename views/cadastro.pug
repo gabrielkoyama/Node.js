@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+  body
+    title #{title}
+    form(action='/cadastro', method='post')
+      h1 Novo Cadastro
+      |         Nome: 
+      input(type='text', name='nome')
+      br
+      |         Idade: 
+      input(type='text', name='idade')
+      br
+      input(type='submit', value='salvar')
+
+      a(href="/") Voltar

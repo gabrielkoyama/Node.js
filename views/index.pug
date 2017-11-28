@@ -1,0 +1,13 @@
+doctype html
+html
+	head
+		title Listar Cadastros
+	body
+		h1 #{title}
+
+		for neguinho in data
+			a(href="/cadastro/edit/"+neguinho._id)
+				li= neguinho.nome  
+
+		a(href="cadastro") Novo Cadastro
+
