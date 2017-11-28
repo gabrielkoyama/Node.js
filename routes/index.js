@@ -50,6 +50,17 @@ router.post('/cadastro/update', function(req, res, next) {
     res.redirect('/');
   });
 
+  router.get('/cadastro/delete/:id', function(req, res, next) {
+    
+      var objeto = {nome:req.body.nome,idade:req.body.idade};
+      var id = ObjectID(req.params.id)
+  
+      MongoClient.connect(config.mongoUrl, function( err, db ){
+        db.collection('fulanos').remove({_id:id});
+      })
+      res.redirect('/');
+    });
+
 
 // edit
 
