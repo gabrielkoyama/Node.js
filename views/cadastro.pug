@@ -2,6 +2,8 @@ doctype html
 html
   head
   body
+  
+    include common/header.pug  
 
     title #{title}
     form(action='/cadastro', method='post')
@@ -15,3 +17,5 @@ html
       input(type='submit', value='salvar')
 
       a(href="/") Voltar
+
+      include common/footer.pug

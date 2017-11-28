@@ -13,8 +13,6 @@ router.get('/', function(req, res, next) {
         console.log('pegou os dados', data);
     })
   })
-
-  // console.log('Pegou as info?', data)
   
 });
 // ultima tent
