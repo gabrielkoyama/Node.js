@@ -1,4 +1,3 @@
-// import { ObjectID } from '../../../../AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/bson';
 var ObjectID = require('mongodb').ObjectID
 var MongoClient = require('mongodb').MongoClient
 var config = require('../config');
@@ -43,26 +42,14 @@ router.get('/cadastro/edit/:id', function(req, res, next) {
 router.post('/cadastro/update', function(req, res, next) {
   
     var objeto = {nome:req.body.nome,idade:req.body.idade};
-  
+    var id = ObjectID(req.body.id)
+
     MongoClient.connect(config.mongoUrl, function( err, db ){
-      db.collection('fulanos').updateOne(objeto);
+      db.collection('fulanos').update({_id:id},(objeto));
     })
     res.redirect('/');
   });
 
-
-// router.get('/cadastro/edit/:id', function(req, err, res){
-
-//   console.log(req.params.id)
-//   var id = ObjectID(req.params.id)
-
-//   MongoClient.connect(config.mongoUrl, function(err,db){
-//     db.collection('fulanos').find({_id:id}).toArray(function( err, data ){
-//       res.render('edit');
-//       console.log(data)            
-//     })
-//   })
-// })
 
 // edit
 
@@ -70,14 +57,6 @@ router.get('/cadastro/edit', function(req, res, next) {
   res.render('edit', { title: 'Edite'});
   });
 
-
-
-
-// router.get('/cadastro/edit/:id', function( req, res ) {
-//   var id = req.params.id;
-//   res.write('opa ' id );
-//   res.end();
-// })
 
 // GET 
 router.get('/cadastro', function(req, res, next) {
