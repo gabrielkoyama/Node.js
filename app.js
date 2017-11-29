@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+var cadastro = require('./routes/cadastro')
 var app = express();
 
 // var router =  app.router();
@@ -24,9 +24,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
-app.use('/users', users);
-app.use('/petecas', require('./routes/cadastro'))
-app.use('/abacaxi', require('./routes/cadastro'))
+app.use('/cadastro', cadastro);
+// app.use('/petecas', require('./routes/cadastro'))
+// app.use('/abacaxi', require('./routes/cadastro'))
 // router.get('/')
 
 
