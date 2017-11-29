@@ -73,6 +73,7 @@ router.post('/cadastro', function(req, res, next) {
   var objeto = {nome:req.body.nome,idade:req.body.idade};
 
   MongoClient.connect(config.mongoUrl, function( err, db ){
+    
     db.collection('fulanos').insert(objeto);
   })
  
