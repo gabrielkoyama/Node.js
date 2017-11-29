@@ -1,21 +1,21 @@
 doctype html
 html
-  head
-  body
+	include common/header.pug  
+
+	body
   
-    include common/header.pug  
 
-    title #{title}
-    form(action='/cadastro', method='post')
-      h1 Novo Cadastro
-      |         Nome: 
-      input(type='text', name='nome')
-      br
-      |         Idade: 
-      input(type='text', name='idade')
-      br
-      input(type='submit', value='salvar')
+	title #{title}
 
-      a(href="/") Voltar
+	.container
+		.row.justify-content-md-center
+			.col-md-6
+				form.form-group(action='/cadastro', method='post')
+				h1.mt-3 Novo Cadastro
+				|         Nome: 
+				input.mb-1.form-control(type='text', name='nome',placeholder='Digite seu nome')
+				|         Idade: 
+				input.mb-3.form-control(type='text', name='idade', placeholder='Digite sua idade')
+				input.btn.btn-primary.mr-1(type='submit', value='Salvar')
 
-      include common/footer.pug
+				a.btn.btn-primary(href="/") Voltar

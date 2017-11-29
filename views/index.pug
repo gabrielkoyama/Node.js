@@ -1,15 +1,16 @@
 doctype html
 html
-	head
-		title Listar Cadastros
-	body
 
-	
-		h1 #{title}
+    include common/header.pug	
 
-		for neguinho in data
-			a(href="/cadastro/edit/"+neguinho._id)
-				li= neguinho.nome  
+    body
 
-		a(href="cadastro") Novo Cadastro
-
+    h1.mt-5.mb-3.text-center #{title}
+    //- h1.display-1.text-center #{title}
+    .container
+        .row.justify-content-md-center
+            .col-md-6
+                for neguinho in data
+                    a(href="/cadastro/edit/"+neguinho._id)
+                        li.mb-1.list-group-item= neguinho.nome 					
+                a.mt-3.btn.btn-primary(href="cadastro") Novo Cadastro		

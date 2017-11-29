@@ -1,22 +1,28 @@
 doctype html
 html
-  head
-  body
-    title #{title}
-    form(action='/cadastro/update', method='post')
-      for neguinho in petecas
+	
+	include common/header.pug
 
-        h1 Edite
-        |         Nome: 
-        input(type='hidden', name='id', value=neguinho._id)
-        input(type='text', name='nome', value=neguinho.nome)
-        br
-        |         Idade: 
-        input(type='text', name='idade', value=neguinho.idade)
-        br
-        input(type='submit', value='Editar')
-        a(href="/") Voltar
-        a(href="/cadastro/delete/"+neguinho._id) Deletar
-      
+	body
+    
+	title #{title}
+    
+	.container
+		.row.justify-content-md-center
+			.col-md-6
+				form.form-group(action='/cadastro/update', method='post')
+					
+					for neguinho in petecas
+						
+						h1.mt-3.mb-3 Editar
+						|         Nome: 
+						input.form-control(type='hidden', name='id', value=neguinho._id)
+						input.mb-1.form-control(type='text', name='nome', value=neguinho.nome)
+						|         Idade: 
+						input.mb-3.form-control(type='text', name='idade', value=neguinho.idade)
+						input.mr-1.btn.btn-primary(type='submit', value='Editar')
+						a.mr-1.btn.btn-primary(href="/") Voltar
+						a.btn.btn-danger(href="/cadastro/delete/"+neguinho._id) Deletar
+
 
           
