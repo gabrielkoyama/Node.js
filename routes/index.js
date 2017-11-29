@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
   MongoClient.connect(config.mongoUrl, function( err, db ){
     db.collection('fulanos').find({}).toArray(function( err, data){
       res.render('index', { title: 'Usuarios cadastrados', data:data});      
-        console.log('pegou os dados', data);
+        // console.log('pegou os dados', data);
     })
   })
   

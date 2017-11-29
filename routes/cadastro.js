@@ -21,9 +21,12 @@ router.get('/cadastro/edit', function(req, res, next) {
   router.post('/add', function(req, res, next) {
     var objeto = {nome:req.body.nome,idade:req.body.idade};
     MongoClient.connect(config.mongoUrl, function( err, db ){    
-      db.collection('fulanos').insert(objeto);
+      db.collection('fulanos').insert(objeto, function(err, result){
+        if(err) return console.log('Erro ao inserir no BD', err)
+        console.log('Inserido com Sucesso!', result)
+        res.redirect('/');
+      });
     })
-    res.redirect('/');
   });
 
   // READ
@@ -41,19 +44,25 @@ router.get('/cadastro/edit', function(req, res, next) {
       var objeto = {nome:req.body.nome,idade:req.body.idade};
       var id = ObjectID(req.body.id)
       MongoClient.connect(config.mongoUrl, function( err, db ){
-        db.collection('fulanos').update({_id:id},(objeto));
+        db.collection('fulanos').update({_id:id},(objeto), function(err, result){
+          if(err) return console.log('Erro ao fazer o Update', err)
+          console.log('Editado com Sucesso!', result)
+          res.redirect('/');
+        });
       })
-    res.redirect('/');
   });
 
     // DELETE
-    router.get('/delete/:id', function(req, res, next) {
+  router.get('/delete/:id', function(req, res, next) {
         var objeto = {nome:req.body.nome,idade:req.body.idade};
         var id = ObjectID(req.params.id)
         MongoClient.connect(config.mongoUrl, function( err, db ){
-          db.collection('fulanos').remove({_id:id});
+          db.collection('fulanos').remove({_id:id}, function(err, result){
+            if(err) return console.log('Erro ao remover',err)
+            console.log('Removido com Sucesso!', result)
+            res.redirect('/');
+          });
         })
-      res.redirect('/');
-    });
+   });
 
 module.exports = router;
